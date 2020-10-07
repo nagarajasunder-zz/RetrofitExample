@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 public class Todo {
 
     @SerializedName("userId")
-    private String userid;
+    private int userid;
 
     @SerializedName("id")
-    private String id;
+    private int id;
 
     @SerializedName("title")
     private String title;
@@ -16,16 +16,22 @@ public class Todo {
     @SerializedName("completed")
     private boolean completed;
 
-    public Todo(String userid, String id, String title, boolean completed) {
+    public Todo(int userid, int id, String title, boolean completed) {
         this.userid = userid;
         this.id = id;
         this.title = title;
         this.completed = completed;
     }
 
+    public Todo(int userid, String title, boolean completed) {
+        this.userid = userid;
+        this.title = title;
+        this.completed = completed;
+    }
+
     @Override
     public String toString() {
-        return "Todo{" +
+        return "\nTodo{" +
                 "userid='" + userid + '\'' +
                 ", id='" + id + '\'' +
                 ", title='" + title + '\'' +
@@ -33,35 +39,5 @@ public class Todo {
                 '}';
     }
 
-    public String getUserid() {
-        return userid;
-    }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
 }

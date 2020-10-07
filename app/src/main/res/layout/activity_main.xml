@@ -6,20 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+   <Button
+       android:id="@+id/get_all_todos"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_margin="5dp"
+       android:text="GET ALL TODOS"
+       android:onClick="get_all_todos"/>
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/get_todo_by_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="GET SPECIFIC TODO"
+        android:layout_below="@+id/get_all_todos"
+        android:onClick="get_todo_by_id"/>
+    <Button
+        android:id="@+id/get_completed_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="GET COMPLETED TODO"
+        android:layout_below="@+id/get_todo_by_id"
+        android:onClick="get_completed_todo"/>
 
-    </androidx.core.widget.NestedScrollView>
+    <Button
+        android:id="@+id/post_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="POST TODO"
+        android:layout_below="@+id/get_completed_todo"
+        android:onClick="post_todo"/>
+
+
 
 </RelativeLayout>
