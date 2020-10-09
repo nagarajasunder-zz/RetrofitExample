@@ -1,6 +1,7 @@
 package com.geekydroid.retrofitexample;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +36,72 @@ public class MainActivity extends AppCompatActivity {
 
         //get_albums_by_id
 //        fetch_data();
+
+        //puttodo using put method in http
+//        puttodos();
+
+        //patchtodo using patch method in http
+//        patch_todo();
+
+        //deletetodo using delete method in http
+        delete_todo();
+    }
+
+    private void delete_todo() {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<Void> call = apiInterface.delete_todo(1);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void patch_todo() {
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Todo todo = new Todo(1, null, null, true);
+        Call<Todo> call = apiInterface.patch_todo(1, todo);
+        call.enqueue(new Callback<Todo>() {
+            @Override
+            public void onResponse(Call<Todo> call, Response<Todo> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Todo> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void puttodos() {
+        Todo todo = new Todo(null, null, null, true);
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<Todo> call = apiInterface.put_todos(1, todo);
+        call.enqueue(new Callback<Todo>() {
+            @Override
+            public void onResponse(Call<Todo> call, Response<Todo> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Todo> call, Throwable t) {
+
+            }
+        });
     }
 
     //get_albums_by_id
